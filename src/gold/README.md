@@ -6,9 +6,10 @@ El job de Gold recibirá los siguientes parámetros:
 
 | Parámetro | Descripción | Ejemplo |
 |-----------|-------------|---------|
-| `--BUCKET` | Nombre del bucket S3 | `glue-bucket-rues-jc2025` |
-| `--SILVER_PATH` | Ruta de la capa Silver | `s3://glue-bucket-rues-jc2025/silver/` |
-| `--GOLD_PATH` | Ruta de la capa Gold | `s3://glue-bucket-rues-jc2025/gold/` |
+| `--BRONZE_PATH` | Ruta de la capa Bronze | `s3://glue-bucket-rues-{codigo}/bronze/` |
+| `--BUCKET` | Nombre del bucket S3 | `glue-bucket-rues-{codigo}` |
+| `--SILVER_PATH` | Ruta de la capa Silver | `s3://glue-bucket-rues-{codigo}/silver/` |
+| `--GOLD_PATH` | Ruta de la capa Gold | `s3://glue-bucket-rues-{codigo}/gold/` |
 
 
 ## Estructura del Modelo Dimensional

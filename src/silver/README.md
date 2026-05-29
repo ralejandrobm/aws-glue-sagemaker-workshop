@@ -21,11 +21,11 @@ El job de Silver recibirá los siguientes parámetros:
 
 | Parámetro | Descripción | Ejemplo |
 |-----------|-------------|---------|
-| `--BUCKET` | Nombre del bucket S3 | `glue-bucket-rues-jc2025` |
-| `--BRONZE_PATH` | Ruta de la capa Bronze | `s3://glue-bucket-rues-jc2025/bronze/` |
-| `--SILVER_PATH` | Ruta de la capa Silver | `s3://glue-bucket-rues-jc2025/silver/` |
-| `--CATALOGOS_PATH` | Ruta de los catálogos | `s3://glue-bucket-rues-jc2025/bronze/catalogos/` |
-| `--LOGS_PATH` | Ruta para guardar logs de errores | `s3://glue-bucket-rues-jc2025/logs/` |
+| `--BUCKET` | Nombre del bucket S3 | `glue-bucket-rues-{codigo}` |
+| `--BRONZE_PATH` | Ruta de la capa Bronze | `s3://glue-bucket-rues-{codigo}/bronze/` |
+| `--SILVER_PATH` | Ruta de la capa Silver | `s3://glue-bucket-rues-{codigo}/silver/` |
+| `--CATALOGOS_PATH` | Ruta de los catálogos | `s3://glue-bucket-rues-{codigo}/bronze/catalogos/` |
+| `--LOGS_PATH` | Ruta para guardar logs de errores | `s3://glue-bucket-rues-{codigo}/logs/` |
 
 ---
 
