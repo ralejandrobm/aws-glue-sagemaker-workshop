@@ -78,7 +78,7 @@ codigo,actividad
 
 ### Paso 4: Cargar dataset principal
 
-Cargue su archivo de datos empresariales en la carpeta `bronze/datos-empresariales/`
+Cargue su archivo de datos empresariales en la carpeta `bronze/`
 Este archivo puede demorarse, aproximadamente 20 minutos en cargar, por lo que es 
 importante realizarlo con tiempo.
 
