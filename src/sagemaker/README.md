@@ -182,9 +182,21 @@ LIMIT 100000;
 
 ## Paso 3 — Leer datos desde Athena
 ```python
-# Instalar dependencias
-!pip install awswrangler scikit-learn matplotlib seaborn joblib -q
-!pip install sagemaker==2.232.2 -q
+
+# Instalar dependencias (SageMaker SDK v2)
+!pip uninstall -y sagemaker-train sagemaker-serve sagemaker-mlops -q
+!pip install "sagemaker==2.232.2" "joblib<1.6" awswrangler scikit-learn matplotlib seaborn -q
+!pip install --force-reinstall --no-deps "sagemaker==2.232.2" -q
+
+# Reiniciar el kernel para cargar las versiones nuevas
+import IPython
+IPython.Application.instance().kernel.do_shutdown(restart=True)
+```
+
+```python
+# Revisar versiones
+import sagemaker, awswrangler as wr, sklearn, joblib, matplotlib, seaborn
+print(sagemaker.__version__, joblib.__version__, sklearn.__version__)
 ```
 # IMPORTANTE REINICIAR EL KERNEL PARA TOMAR LAS NUEVAS INSTALACIONES
 ### configuración
