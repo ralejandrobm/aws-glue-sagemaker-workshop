@@ -587,9 +587,13 @@ def lambda_handler(event, context):
     runtime = boto3.client('sagemaker-runtime')
 
     # Parsear el body entrante
-    body = json.loads(event.get('body', '{}'))
+    # Con proxy: el JSON viene como texto en event['body']
+    # Sin proxy o desde "Test": el JSON viene directo en event
+    body = event.get('body', event)
+    if isinstance(body, str):
+        body = json.loads(body)
 
-    print(f"Lambda body: {body}")  # agregar este debug
+    print(f"Lambda body: {body}")  # debug
 
     response = runtime.invoke_endpoint(
         EndpointName='kmeans-perfiles-empresas',
@@ -644,35 +648,17 @@ def lambda_handler(event, context):
  
 ---
  
-### E) Probar el API desde el notebook o terminal
+### E) Probar el API desde terminal
  
-```python
-import requests
- 
-API_URL = 'https://<api-id>.execute-api.us-east-1.amazonaws.com/prod/predecir'
- 
-payload = {
-    "instancias": [
-        [0, 1, 5, 2, 3.5, 1.0],
-        [2, 0, 3, 3, 12.0, 4.2]
-    ]
-}
- 
-response = requests.post(API_URL, json=payload)
-print(response.json())
-```
- 
-O desde terminal con curl:
+ con curl:
  
 ```bash
-curl -X POST https://<api-id>.execute-api.us-east-1.amazonaws.com/prod/predecir \
-  -H "Content-Type: application/json" \
-  -d '{"instancias": [[0, 1, 5, 2, 3.5, 1.0]]}'
+curl.exe -X POST https://kz52k9fry2.execute-api.us-east-1.amazonaws.com/prod/predecir -H "Content-Type: application/json" -d '{\"instancias\": [[0, 1, 5, 2, 3.5, 1.0]]}''
 ```
 O desde postman en raw:
 ```
 {
-    "body": "{\"instancias\": [[0, 1, 5, 2, 3.5, 1.0]]}"
+    "instancias": [[0, 1, 5, 2, 3.5, 1.0]]
 }
 ```
 ---
