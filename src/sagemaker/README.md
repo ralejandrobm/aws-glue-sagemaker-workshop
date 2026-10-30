@@ -653,7 +653,7 @@ def lambda_handler(event, context):
  con curl:
  
 ```bash
-curl.exe -X POST https://kz52k9fry2.execute-api.us-east-1.amazonaws.com/prod/predecir -H "Content-Type: application/json" -d '{\"instancias\": [[0, 1, 5, 2, 3.5, 1.0]]}''
+curl.exe -X POST https://<api-id>.execute-api.us-east-1.amazonaws.com/prod/predecir -H "Content-Type: application/json" -d '{\"instancias\": [[0, 1, 5, 2, 3.5, 1.0]]}'
 ```
 O desde postman en raw:
 ```
