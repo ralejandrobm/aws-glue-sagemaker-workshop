@@ -514,25 +514,24 @@ print(f"✅ Endpoint activo: {predictor.endpoint_name}")
 ## Paso 11 — Probar el endpoint
 
 ```python
-import json
+from sagemaker.serializers import JSONSerializer
+from sagemaker.deserializers import JSONDeserializer
 
+predictor.serializer = JSONSerializer()
+predictor.deserializer = JSONDeserializer()
 # Formato: [tipo_sociedad, org_juridica, actividad, segmento, antiguedad, anos_sin_renovar]
-payload = {
-    "instancias": [
-        [0, 1, 5, 2, 3.5, 1.0],    # empresa nueva, renovación reciente
-        [2, 0, 3, 3, 12.0, 4.2],   # empresa madura, sin renovar hace tiempo
-        [1, 1, 7, 1, 6.5, 0.8]     # empresa establecida, al día
-    ]
+payload = {'instancias': [
+    [1.0, 9.0, 60.0, 0.0, 9.0, 1.0],  #'Empresas jóvenes con renovación puntual
+    [5.0, 29.0, 418.0, 0.0, 9.0, 5.0], # 'Empresas antiguas con varios años sin renovar'
+    [5.0, 21.0, 211.0, 3.0, 1.0, 1.0],  # 'Empresas establecidas con renovación regular'
+    [5.0, 21.0, 383.0, 1.0, 4.0, 2026.0] # 'Empresas recientes que dejaron de renovar'
+  ]
 }
 
-response = predictor.predict(json.dumps(payload))
+
+response = predictor.predict(payload)
 print("Predicciones:", response)
-# Salida esperada:
-# {"predicciones": [
-#   {"cluster": 0, "perfil": "Nuevas al día"},
-#   {"cluster": 1, "perfil": "Maduras en riesgo"},
-#   {"cluster": 2, "perfil": "Estables"}
-# ]}
+
 ```
 
 ---
