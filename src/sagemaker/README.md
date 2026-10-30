@@ -491,7 +491,7 @@ time.sleep(10)
 # 4. Redesplegar
 ROLE = sagemaker.get_execution_role()
 sklearn_model = SKLearnModel(
-    model_data=f's3://{BUCKET}/modelos/kmeans/model_final.tar.gz',
+    model_data=f's3://{BUCKET}/modelos/kmeans/model.tar.gz',
     role=ROLE,
     entry_point='inference.py',
     framework_version='1.2-1',
